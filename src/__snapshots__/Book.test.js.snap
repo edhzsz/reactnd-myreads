@@ -11,9 +11,68 @@ exports[`Component: Book should match its empty snapshot 1`] = `
       className="book-cover"
       style={
         Object {
-          "backgroundImage": "url(\\"http://books.google.com/books/content?id=PGR2AwAAQBAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE73-GnPVEyb7MOCxDzOYF1PTQRuf6nCss9LMNOSWBpxBrz8Pm2_mFtWMMg_Y1dx92HT7cUoQBeSWjs3oEztBVhUeDFQX6-tWlWz1-feexS0mlJPjotcwFqAg6hBYDXuK_bkyHD-y&source=gbs_api\\")",
-          "height": 193,
-          "width": 128,
+          "backgroundImage": "url(\\"undefined\\")",
+          "height": undefined,
+          "width": undefined,
+        }
+      }
+    />
+    <div
+      className="book-shelf-changer"
+    >
+      <select>
+        <option
+          disabled={true}
+          value="none"
+        >
+          Move to...
+        </option>
+        <option
+          value="currentlyReading"
+        >
+          Currently Reading
+        </option>
+        <option
+          value="wantToRead"
+        >
+          Want to Read
+        </option>
+        <option
+          value="read"
+        >
+          Read
+        </option>
+        <option
+          value="none"
+        >
+          None
+        </option>
+      </select>
+    </div>
+  </div>
+  <div
+    className="book-title"
+  />
+  <div
+    className="book-authors"
+  />
+</div>
+`;
+
+exports[`Component: Book should render the props 1`] = `
+<div
+  className="book"
+>
+  <div
+    className="book-top"
+  >
+    <div
+      className="book-cover"
+      style={
+        Object {
+          "backgroundImage": "url(\\"test-url\\")",
+          "height": "200",
+          "width": "100",
         }
       }
     />
@@ -53,12 +112,12 @@ exports[`Component: Book should match its empty snapshot 1`] = `
   <div
     className="book-title"
   >
-    To Kill a Mockingbird
+    Test Name
   </div>
   <div
     className="book-authors"
   >
-    Harper Lee
+    test authors
   </div>
 </div>
 `;

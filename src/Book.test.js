@@ -16,4 +16,12 @@ describe('Component: Book', () => {
 
     expect(tree).toMatchSnapshot();
   });
+
+  it('should render the props', () => {
+    const tree = renderer.create(
+      <Book name="Test Name" authors="test authors" coverWidth="100" coverHeight="200" coverUrl="test-url" />
+     ).toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
 });
