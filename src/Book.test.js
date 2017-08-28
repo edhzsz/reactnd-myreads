@@ -18,9 +18,9 @@ describe('Component: Book', () => {
   });
 
   it('should render the props', () => {
-    const cover = {width: 100, height:200, url:"test-url"}
+    const coverUrl = "test-url";
     const tree = renderer.create(
-      <Book name="Test Name" authors="test authors" cover={cover} />
+      <Book name="Test Name" authors="test authors" coverUrl={coverUrl} />
      ).toJSON();
 
     expect(tree).toMatchSnapshot();

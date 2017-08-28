@@ -1,9 +1,12 @@
 import React from 'react'
 
-const BookCover = (props) => { 
-  const { width, height, url } = props.cover || { width: 128, height: 192, url: "http://via.placeholder.com/128x192" };
+const BookCover = ({ coverUrl }) => {
+  const style = coverUrl
+    ? { width: 128, height: 192, backgroundImage: `url("${url}")` }
+    : { width: 128, height: 192 };
+    
   return (
-    <div className="book-cover" style={{ width, height, backgroundImage: `url("${url}")` }}></div>
+    <div className="book-cover" style={style}></div>
   );
 }
 

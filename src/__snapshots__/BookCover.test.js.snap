@@ -5,7 +5,6 @@ exports[`Component: BookCover should match its empty snapshot 1`] = `
   className="book-cover"
   style={
     Object {
-      "backgroundImage": "url(\\"http://via.placeholder.com/128x192\\")",
       "height": 192,
       "width": 128,
     }
@@ -18,9 +17,8 @@ exports[`Component: BookCover should render the props 1`] = `
   className="book-cover"
   style={
     Object {
-      "backgroundImage": "url(\\"test-url\\")",
-      "height": 200,
-      "width": 100,
+      "height": 192,
+      "width": 128,
     }
   }
 />
