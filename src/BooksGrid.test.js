@@ -1,17 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import BooksApp from './App';
+import BooksGrid from './BooksGrid.js';
 import renderer from 'react-test-renderer';
 
-describe('Component: App', () => {
+describe('Component: BooksGrid', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<BooksApp />, div);
+    ReactDOM.render(<BooksGrid />, div);
   });
 
   it('should match its empty snapshot', () => {
     const tree = renderer.create(
-      <BooksApp />
+      <BooksGrid />
      ).toJSON();
 
     expect(tree).toMatchSnapshot();

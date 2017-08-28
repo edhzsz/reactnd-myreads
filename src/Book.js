@@ -2,7 +2,7 @@ import React from 'react'
 import BookShelfChanger from './BookShelfChanger.js'
 import BookCover from './BookCover.js'
 
-let Book = ({ name, authors, cover}) => (
+const Book = ({ name, authors, cover}) => (
     <div className="book">
       <div className="book-top">
         <BookCover cover={cover} />
