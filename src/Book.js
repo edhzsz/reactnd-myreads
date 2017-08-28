@@ -1,12 +1,13 @@
 import React from 'react'
 import BookShelfChanger from './BookShelfChanger.js'
+import BookCover from './BookCover.js'
 
-let Book = ({ name, authors, coverWidth, coverHeight, coverUrl}) => (
+let Book = ({ name, authors, cover}) => (
     <div className="book">
       <div className="book-top">
-        <div className="book-cover" style={{ width: coverWidth, height: coverHeight, backgroundImage: `url("${coverUrl}")` }}></div>
-          <BookShelfChanger />
-        </div>
+        <BookCover cover={cover} />
+        <BookShelfChanger />
+      </div>
       <div className="book-title">{name}</div>
       <div className="book-authors">{authors}</div>
     </div>
