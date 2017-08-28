@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: App should match its empty snapshot 1`] = `
+<div
+  className="app"
+>
+  <div
+    className="search-books"
+  >
+    <div
+      className="search-books-bar"
+    >
+      <a
+        className="close-search"
+        onClick={[Function]}
+      >
+        Close
+      </a>
+      <div
+        className="search-books-input-wrapper"
+      >
+        <input
+          placeholder="Search by title or author"
+          type="text"
+        />
+      </div>
+    </div>
+    <div
+      className="search-books-results"
+    >
+      <ol
+        className="books-grid"
+      />
+    </div>
+  </div>
+</div>
+`;
