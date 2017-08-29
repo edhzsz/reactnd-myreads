@@ -20,7 +20,7 @@ describe('Component: Book', () => {
   });
 
   it('should render the props', () => {
-    const book = { title:"Test Name", authors:["test author 1", "test author 2"], coverUrl: "test-url" };
+    const book = { title:"Test Name", authors:["test author 1", "test author 2"], imageLinks: { thumbnail: "test-url" } };
 
     const tree = toJson(shallow(
       <Book book={book} />

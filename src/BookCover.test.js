@@ -17,10 +17,28 @@ describe('Component: BookCover', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('should render the props', () => {
-    const cover = {width: 100, height:200, url:"test-url"}
+  it('should render using the thumbnail url as background', () => {
+    const imageLinks = { thumbnail: "test-url" };
     const tree = renderer.create(
-      <BookCover cover={cover} />
+      <BookCover imageLinks={imageLinks} />
+     ).toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('should render the smallthumbnail if thumbnail is not available', () => {
+    const imageLinks = { smallThumbnail: "test-url-small" };
+    const tree = renderer.create(
+      <BookCover imageLinks={imageLinks} />
+     ).toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('should render the thumbnail if both, thumbnail and smallThumbnail, are available', () => {
+    const imageLinks = { thumbnail: "test-url", smallThumbnail: "test-url-small" };
+    const tree = renderer.create(
+      <BookCover imageLinks={imageLinks} />
      ).toJSON();
 
     expect(tree).toMatchSnapshot();

@@ -12,11 +12,38 @@ exports[`Component: BookCover should match its empty snapshot 1`] = `
 />
 `;
 
-exports[`Component: BookCover should render the props 1`] = `
+exports[`Component: BookCover should render the smallthumbnail if thumbnail is not available 1`] = `
 <div
   className="book-cover"
   style={
     Object {
+      "backgroundImage": "url(\\"test-url-small\\")",
+      "height": 192,
+      "width": 128,
+    }
+  }
+/>
+`;
+
+exports[`Component: BookCover should render the thumbnail if both, thumbnail and smallThumbnail, are available 1`] = `
+<div
+  className="book-cover"
+  style={
+    Object {
+      "backgroundImage": "url(\\"test-url\\")",
+      "height": 192,
+      "width": 128,
+    }
+  }
+/>
+`;
+
+exports[`Component: BookCover should render using the thumbnail url as background 1`] = `
+<div
+  className="book-cover"
+  style={
+    Object {
+      "backgroundImage": "url(\\"test-url\\")",
       "height": 192,
       "width": 128,
     }

@@ -27,7 +27,11 @@ exports[`Component: Book should render the props 1`] = `
     className="book-top"
   >
     <BookCover
-      url="test-url"
+      imageLinks={
+        Object {
+          "thumbnail": "test-url",
+        }
+      }
     />
     <BookShelfChanger />
   </div>
