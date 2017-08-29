@@ -7,47 +7,8 @@ exports[`Component: Book should match its empty snapshot 1`] = `
   <div
     className="book-top"
   >
-    <div
-      className="book-cover"
-      style={
-        Object {
-          "height": 192,
-          "width": 128,
-        }
-      }
-    />
-    <div
-      className="book-shelf-changer"
-    >
-      <select>
-        <option
-          disabled={true}
-          value="none"
-        >
-          Move to...
-        </option>
-        <option
-          value="currentlyReading"
-        >
-          Currently Reading
-        </option>
-        <option
-          value="wantToRead"
-        >
-          Want to Read
-        </option>
-        <option
-          value="read"
-        >
-          Read
-        </option>
-        <option
-          value="none"
-        >
-          None
-        </option>
-      </select>
-    </div>
+    <BookCover />
+    <BookShelfChanger />
   </div>
   <div
     className="book-title"
@@ -65,48 +26,10 @@ exports[`Component: Book should render the props 1`] = `
   <div
     className="book-top"
   >
-    <div
-      className="book-cover"
-      style={
-        Object {
-          "backgroundImage": "url(\\"test-url\\")",
-          "height": 192,
-          "width": 128,
-        }
-      }
+    <BookCover
+      url="test-url"
     />
-    <div
-      className="book-shelf-changer"
-    >
-      <select>
-        <option
-          disabled={true}
-          value="none"
-        >
-          Move to...
-        </option>
-        <option
-          value="currentlyReading"
-        >
-          Currently Reading
-        </option>
-        <option
-          value="wantToRead"
-        >
-          Want to Read
-        </option>
-        <option
-          value="read"
-        >
-          Read
-        </option>
-        <option
-          value="none"
-        >
-          None
-        </option>
-      </select>
-    </div>
+    <BookShelfChanger />
   </div>
   <div
     className="book-title"

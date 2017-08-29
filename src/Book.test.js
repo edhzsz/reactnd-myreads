@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Book from './Book.js';
 import renderer from 'react-test-renderer';
+import { shallow } from 'enzyme';
+import toJson from 'enzyme-to-json';
 
 describe('Component: Book', () => {
   it('renders without crashing', () => {
@@ -10,9 +12,9 @@ describe('Component: Book', () => {
   });
 
   it('should match its empty snapshot', () => {
-    const tree = renderer.create(
+    const tree = toJson(shallow(
       <Book />
-     ).toJSON();
+     ));
 
     expect(tree).toMatchSnapshot();
   });
@@ -20,9 +22,9 @@ describe('Component: Book', () => {
   it('should render the props', () => {
     const book = { title:"Test Name", authors:["test author 1", "test author 2"], coverUrl: "test-url" };
 
-    const tree = renderer.create(
+    const tree = toJson(shallow(
       <Book book={book} />
-     ).toJSON();
+     ));
 
     expect(tree).toMatchSnapshot();
   });
