@@ -182,7 +182,7 @@ exports[`Component: BooksList should match its empty snapshot 1`] = `
                     style={
                       Object {
                         "backgroundImage": "url(\\"http://books.google.com/books/content?id=uu1mC6zWNTwC&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE73pGHfBNSsJG9Y8kRBpmLUft9O4BfItHioHolWNKOdLavw-SLcXADy3CPAfJ0_qMb18RmCa7Ds1cTdpM3dxAGJs8zfCfm8c6ggBIjzKT7XR5FIB53HHOhnsT7a0Cc-PpneWq9zX&source=gbs_api\\")",
-                        "height": 193,
+                        "height": 192,
                         "width": 128,
                       }
                     }
@@ -385,7 +385,7 @@ exports[`Component: BooksList should match its empty snapshot 1`] = `
                     style={
                       Object {
                         "backgroundImage": "url(\\"http://books.google.com/books/content?id=1q_xAwAAQBAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE712CA0cBYP8VKbEcIVEuFJRdX1k30rjLM29Y-dw_qU1urEZ2cQ42La3Jkw6KmzMmXIoLTr50SWTpw6VOGq1leINsnTdLc_S5a5sn9Hao2t5YT7Ax1RqtQDiPNHIyXP46Rrw3aL8&source=gbs_api\\")",
-                        "height": 174,
+                        "height": 192,
                         "width": 128,
                       }
                     }
