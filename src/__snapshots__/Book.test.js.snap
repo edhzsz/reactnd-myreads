@@ -69,6 +69,7 @@ exports[`Component: Book should render the props 1`] = `
       className="book-cover"
       style={
         Object {
+          "backgroundImage": "url(\\"test-url\\")",
           "height": 192,
           "width": 128,
         }
@@ -115,7 +116,7 @@ exports[`Component: Book should render the props 1`] = `
   <div
     className="book-authors"
   >
-    test authors
+    test author 1, test author 2
   </div>
 </div>
 `;

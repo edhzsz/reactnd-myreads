@@ -1,7 +1,7 @@
 import React from 'react'
 
-const BookCover = ({ coverUrl }) => {
-  const style = coverUrl
+const BookCover = ({ url }) => {
+  const style = url
     ? { width: 128, height: 192, backgroundImage: `url("${url}")` }
     : { width: 128, height: 192 };
     
