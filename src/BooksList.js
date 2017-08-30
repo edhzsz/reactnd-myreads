@@ -1,7 +1,7 @@
 import React from 'react'
 import BookShelf from './BookShelf.js'
 
-const BooksList = ({books, onSearch}) => {
+const BooksList = ({books, onSearch, onShelfChange}) => {
   const shelfs = ["currentlyReading", "wantToRead", "read"];
 
   const shelfNames = {
@@ -27,7 +27,7 @@ const BooksList = ({books, onSearch}) => {
       <div className="list-books-content">
         <div>
           {shelfs.map(s => (
-            <BookShelf title={shelfNames[s]} books={booksByShelf[s]} key={s}/>
+            <BookShelf title={shelfNames[s]} books={booksByShelf[s]} key={s} onShelfChange={onShelfChange}/>
           ))}
         </div>
       </div>

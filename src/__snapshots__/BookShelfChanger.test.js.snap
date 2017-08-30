@@ -1,10 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Component: BookShelfChanger should match its empty snapshot 1`] = `
+exports[`Component: BookShelfChanger should match its empty snapshot 1`] = `null`;
+
+exports[`Component: BookShelfChanger should select the shelf of the book 1`] = `
 <div
   className="book-shelf-changer"
 >
-  <select>
+  <select
+    onchange={[Function]}
+    value="wantToRead"
+  >
     <option
       disabled={true}
       value="none"

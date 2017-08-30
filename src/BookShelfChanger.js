@@ -1,15 +1,18 @@
 import React from 'react'
 
-const BookShelfChanger = (props) => (
-  <div className="book-shelf-changer">
-    <select>
-      <option value="none" disabled>Move to...</option>
-      <option value="currentlyReading">Currently Reading</option>
-      <option value="wantToRead">Want to Read</option>
-      <option value="read">Read</option>
-      <option value="none">None</option>
-    </select>
-  </div>
-)
+const BookShelfChanger = ({ book, onShelfChange }) => { 
+  return book 
+  ? (
+    <div className="book-shelf-changer">
+      <select value={book.shelf} onChange={(event) => onShelfChange(book, event.target.value)}>
+        <option value="none" disabled>Move to...</option>
+        <option value="currentlyReading">Currently Reading</option>
+        <option value="wantToRead">Want to Read</option>
+        <option value="read">Read</option>
+        <option value="none">None</option>
+      </select>
+    </div>
+  ) : null;
+}
 
 export default BookShelfChanger;

@@ -2,6 +2,7 @@ import React from 'react'
 import * as BooksAPI from './BooksAPI'
 import BooksSearch from './BooksSearch.js'
 import BooksList from './BooksList.js'
+import update from 'immutability-helper';
 import './App.css'
 
 class BooksApp extends React.Component {
@@ -20,13 +21,37 @@ class BooksApp extends React.Component {
     BooksAPI.getAll().then(books => this.setState({books: books}))
   }
 
+  changeShelf = (book, newShelf) => { 
+    BooksAPI.update(book, newShelf).then(res => {
+      console.log(res);
+      this.setState(state => {
+        const books = state.books;
+        if(!books) {
+          return {};
+        }
+  
+        const index = state.books.findIndex(b => b.id === book.id);
+        if(index === -1) {
+          return {};
+        }
+  
+        const updatedBook = update(books[index], {shelf: {$set: newShelf}});
+        const updatedBooks = update(books, { $splice: [[index, 1, updatedBook]] });
+  
+        return {books: updatedBooks};
+      });
+    });
+   };
+
+  onSearch = () => this.setState({ showSearchPage: true });
+
   render() {
     return (
       <div className="app">
         {this.state.showSearchPage ? (
           <BooksSearch onCancelSearch={() => this.setState({ showSearchPage: false })} />
         ) : (
-          <BooksList books={this.state.books} onSearch={() => this.setState({ showSearchPage: true })}/>
+          <BooksList books={this.state.books} onSearch={this.onSearch} onShelfChange={this.changeShelf}/>
         )}
       </div>
     )
