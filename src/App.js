@@ -21,7 +21,7 @@ class BooksApp extends React.Component {
     BooksAPI.getAll().then(books => this.setState({books: books}))
   }
 
-  changeShelf = (book, newShelf) => { 
+  changeShelf = (book, newShelf) => {
     BooksAPI.update(book, newShelf).then(res => {
       console.log(res);
       this.setState(state => {
@@ -32,9 +32,14 @@ class BooksApp extends React.Component {
   
         const index = state.books.findIndex(b => b.id === book.id);
         if(index === -1) {
-          return {};
+          if(newShelf === 'none') {
+            return {};
+          }
+          
+          const updatedBook = update(book, {shelf: {$set: newShelf}});
+          return update(books, {$push: updatedBook});
         }
-  
+
         const updatedBook = update(books[index], {shelf: {$set: newShelf}});
         const updatedBooks = update(books, { $splice: [[index, 1, updatedBook]] });
   

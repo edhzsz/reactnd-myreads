@@ -35,4 +35,6 @@ describe('Component: BookShelfChanger', () => {
 
     expect(tree).toMatchSnapshot();
   });
+
+  // todo: test the onChange event, it should call the handler with correct parameters
 });
