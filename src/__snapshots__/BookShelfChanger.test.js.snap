@@ -40,7 +40,7 @@ exports[`Component: BookShelfChanger should select the shelf of the book 1`] = `
   className="book-shelf-changer"
 >
   <select
-    onchange={[Function]}
+    onChange={[Function]}
     value="wantToRead"
   >
     <option
