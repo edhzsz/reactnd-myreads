@@ -1,4 +1,5 @@
 import React from 'react'
+import { Route } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import BooksSearch from './BooksSearch.js'
 import BooksList from './BooksList.js'
@@ -21,49 +22,51 @@ class BooksApp extends React.Component {
     BooksAPI.getAll().then(books => this.setState({books: books}))
   }
 
-  changeShelf = (book, newShelf) => {
-    BooksAPI.update(book, newShelf).then(res => {
-      console.log(res);
-      this.setState(state => {
-        const books = state.books;
-        if(!books) {
+  updateShelf = (book, newShelf) => {
+    this.setState(state => {
+      const books = state.books;
+      if(!books) {
+        return {};
+      }
+
+      const index = state.books.findIndex(b => b.id === book.id);
+      if(index === -1) {
+        if(newShelf === 'none') {
           return {};
         }
-  
-        const index = state.books.findIndex(b => b.id === book.id);
-        if(index === -1) {
-          if(newShelf === 'none') {
-            return {};
-          }
 
-          const updatedBook = update(book, {shelf: {$set: newShelf}});
-          return update(books, {$push: updatedBook});
-        }
+        const updatedBook = update(book, {shelf: {$set: newShelf}});
+        return {books: update(books, {$push: [updatedBook]}) };
+      }
 
-        const updatedBook = update(books[index], {shelf: {$set: newShelf}});
-        const updatedBooks = update(books, { $splice: [[index, 1, updatedBook]] });
-  
-        return {books: updatedBooks};
-      });
+      const updatedBook = update(books[index], {shelf: {$set: newShelf}});
+      const updatedBooks = update(books, { $splice: [[index, 1, updatedBook]] });
+
+      return {books: updatedBooks};
+    });
+  }
+
+  changeShelf = (book, newShelf) => {
+    BooksAPI.update(book, newShelf).then(res => {
+      this.updateShelf(book, newShelf);
     });
    };
-
-  onSearch = () => this.setState({ showSearchPage: true });
 
   render() {
     return (
       <div className="app">
-        {this.state.showSearchPage ? (
+        <Route path="/search" render={() => (
           <BooksSearch
-            onCancelSearch={() => this.setState({ showSearchPage: false })}
+            onShelfChange={this.changeShelf}
             books={this.state.books}
             query="" />
-        ) : (
+        )} />
+
+        <Route exact path="/" render={() => (
           <BooksList
             books={this.state.books}
-            onSearch={this.onSearch}
             onShelfChange={this.changeShelf}/>
-        )}
+          )} />
       </div>
     )
   }

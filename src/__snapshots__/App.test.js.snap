@@ -5,34 +5,78 @@ exports[`Component: App should match its empty snapshot 1`] = `
   className="app"
 >
   <div
-    className="search-books"
+    className="list-books"
   >
     <div
-      className="search-books-bar"
+      className="list-books-title"
     >
-      <a
-        className="close-search"
-        onClick={[Function]}
-      >
-        Close
-      </a>
-      <div
-        className="search-books-input-wrapper"
-      >
-        <input
-          onChange={[Function]}
-          placeholder="Search by title or author"
-          type="text"
-          value=""
-        />
+      <h1>
+        MyReads
+      </h1>
+    </div>
+    <div
+      className="list-books-content"
+    >
+      <div>
+        <div
+          className="bookshelf"
+        >
+          <h2
+            className="bookshelf-title"
+          >
+            Currently Reading
+          </h2>
+          <div
+            className="bookshelf-books"
+          >
+            <ol
+              className="books-grid"
+            />
+          </div>
+        </div>
+        <div
+          className="bookshelf"
+        >
+          <h2
+            className="bookshelf-title"
+          >
+            Want to Read
+          </h2>
+          <div
+            className="bookshelf-books"
+          >
+            <ol
+              className="books-grid"
+            />
+          </div>
+        </div>
+        <div
+          className="bookshelf"
+        >
+          <h2
+            className="bookshelf-title"
+          >
+            Read
+          </h2>
+          <div
+            className="bookshelf-books"
+          >
+            <ol
+              className="books-grid"
+            />
+          </div>
+        </div>
       </div>
     </div>
     <div
-      className="search-books-results"
+      className="open-search"
     >
-      <ol
-        className="books-grid"
-      />
+      <a
+        href="/search"
+        onClick={[Function]}
+      >
+        Add a book
+      </a>
     </div>
   </div>
 </div>

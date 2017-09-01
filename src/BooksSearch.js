@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import debounce from 'lodash/debounce'
 import BooksGrid from './BooksGrid.js'
@@ -50,7 +51,7 @@ class BooksSearch extends Component {
     return (
       <div className="search-books">
         <div className="search-books-bar">
-          <a className="close-search" onClick={this.props.onCancelSearch}>Close</a>
+          <Link className="close-search" to="/">Close</Link>
           <div className="search-books-input-wrapper">
           <input
             type="text"
@@ -60,7 +61,7 @@ class BooksSearch extends Component {
           </div>
         </div>
         <div className="search-books-results">
-          <BooksGrid books={this.state.searchResults} />
+          <BooksGrid books={this.state.searchResults} onShelfChange={this.props.onShelfChange} />
         </div>
       </div>
     );

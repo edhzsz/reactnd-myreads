@@ -4,16 +4,17 @@ import BooksList from './BooksList.js';
 import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
+import { BrowserRouter } from 'react-router-dom'
 
 describe('Component: BooksList', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<BooksList />, div);
+    ReactDOM.render(<BrowserRouter><BooksList /></BrowserRouter>, div);
   });
 
   it('should match its empty snapshot', () => {
     const tree = toJson(shallow(
-      <BooksList />
+      <BrowserRouter><BooksList /></BrowserRouter>
      ));
 
     expect(tree).toMatchSnapshot();
@@ -94,7 +95,7 @@ describe('Component: BooksList', () => {
     ];
 
     const tree = toJson(shallow(
-      <BooksList books={books}/>
+      <BrowserRouter><BooksList books={books}/></BrowserRouter>
      ));
 
     expect(tree).toMatchSnapshot();
