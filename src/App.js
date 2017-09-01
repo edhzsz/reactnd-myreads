@@ -1,5 +1,6 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
+import debounce from 'lodash/debounce'
 import * as BooksAPI from './BooksAPI'
 import BooksSearch from './BooksSearch.js'
 import BooksList from './BooksList.js'
@@ -8,18 +9,43 @@ import './App.css'
 
 class BooksApp extends React.Component {
   state = {
-    /**
-     * TODO: Instead of using this state variable to keep track of which page
-     * we're on, use the URL in the browser's address bar. This will ensure that
-     * users can use the browser's back and forward buttons to navigate between
-     * pages, as well as provide a good URL they can bookmark and share.
-     */
-    showSearchPage: true,
-    books: []
+    query: "",
+    searchResults: [],
+    books: [],
+    booksShelfs: {}
   }
 
-  componentDidMount() {
-    BooksAPI.getAll().then(books => this.setState({books: books}))
+  performSearch = (query) => {
+    if(query) {
+      BooksAPI.search(query, 100).then(results => {
+        if(results && !results.error) {
+          results.forEach(b => b.shelf = this.state.booksShelfs[b.id]);
+          this.setState({searchResults: results});
+        }
+      });
+    }
+  }
+
+  debouncedSearch = debounce(this.performSearch, 200);
+
+  changeShelf = (book, newShelf) => {
+    BooksAPI.update(book, newShelf).then(res => {
+      this.updateShelf(book, newShelf);
+    });
+   };
+
+  onSearch = (query) => {
+    this.setState({ query, searchResults:[] });
+    this.debouncedSearch(query);
+  }
+
+  updateBookIn = (list, book, addIfNotFound) => {
+    const index = list.findIndex(b => b.id === book.id);
+    return index !== -1
+      ? update(list, { $splice: [[index, 1, book]] })
+      : addIfNotFound
+        ? update(list, {$push: [book]})
+        : null;
   }
 
   updateShelf = (book, newShelf) => {
@@ -30,27 +56,43 @@ class BooksApp extends React.Component {
       }
 
       const index = state.books.findIndex(b => b.id === book.id);
-      if(index === -1) {
-        if(newShelf === 'none') {
-          return {};
-        }
+      const updatedBook = update(book, {shelf: {$set: newShelf}});
 
-        const updatedBook = update(book, {shelf: {$set: newShelf}});
-        return {books: update(books, {$push: [updatedBook]}) };
+      if(index === -1 && newShelf === 'none') {
+          return {};
       }
 
-      const updatedBook = update(books[index], {shelf: {$set: newShelf}});
-      const updatedBooks = update(books, { $splice: [[index, 1, updatedBook]] });
+      const updatedBooks = this.updateBookIn(state.books, updatedBook, true);
+      const updatedBooksShelfs = this.getBooksShelfs(updatedBooks);
+      const updatedSearchResults = this.updateBookIn(state.searchResults, updatedBook, false);
 
-      return {books: updatedBooks};
+      return updatedSearchResults
+        ? {
+          books: updatedBooks,
+          booksShelfs: updatedBooksShelfs,
+          searchResults: updatedSearchResults
+        }
+        : {
+          books: updatedBooks,
+          booksShelfs: updatedBooksShelfs
+        }
     });
   }
 
-  changeShelf = (book, newShelf) => {
-    BooksAPI.update(book, newShelf).then(res => {
-      this.updateShelf(book, newShelf);
-    });
-   };
+  getBooksShelfs = books => {
+    return books && books.reduce
+    ? books.reduce((acc, b) => {
+        acc[b.id] = b.shelf;
+        return acc;
+      }, {})
+    : {};
+  }
+
+  componentDidMount() {
+    BooksAPI.getAll().then(books => {
+      this.setState({books, booksShelfs: this.getBooksShelfs(books)})
+    })
+  }
 
   render() {
     return (
@@ -58,8 +100,9 @@ class BooksApp extends React.Component {
         <Route path="/search" render={() => (
           <BooksSearch
             onShelfChange={this.changeShelf}
-            books={this.state.books}
-            query="" />
+            searchResults={this.state.searchResults}
+            onSearch={this.onSearch}
+            query={this.state.query} />
         )} />
 
         <Route exact path="/" render={() => (
