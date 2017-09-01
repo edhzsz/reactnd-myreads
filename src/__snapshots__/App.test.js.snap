@@ -20,8 +20,10 @@ exports[`Component: App should match its empty snapshot 1`] = `
         className="search-books-input-wrapper"
       >
         <input
+          onChange={[Function]}
           placeholder="Search by title or author"
           type="text"
+          value=""
         />
       </div>
     </div>

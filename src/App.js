@@ -35,7 +35,7 @@ class BooksApp extends React.Component {
           if(newShelf === 'none') {
             return {};
           }
-          
+
           const updatedBook = update(book, {shelf: {$set: newShelf}});
           return update(books, {$push: updatedBook});
         }
@@ -54,9 +54,15 @@ class BooksApp extends React.Component {
     return (
       <div className="app">
         {this.state.showSearchPage ? (
-          <BooksSearch onCancelSearch={() => this.setState({ showSearchPage: false })} />
+          <BooksSearch
+            onCancelSearch={() => this.setState({ showSearchPage: false })}
+            books={this.state.books}
+            query="" />
         ) : (
-          <BooksList books={this.state.books} onSearch={this.onSearch} onShelfChange={this.changeShelf}/>
+          <BooksList
+            books={this.state.books}
+            onSearch={this.onSearch}
+            onShelfChange={this.changeShelf}/>
         )}
       </div>
     )
