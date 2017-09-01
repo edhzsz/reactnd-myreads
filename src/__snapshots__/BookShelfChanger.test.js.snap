@@ -2,6 +2,39 @@
 
 exports[`Component: BookShelfChanger should match its empty snapshot 1`] = `null`;
 
+exports[`Component: BookShelfChanger should not show non when there is no shelf selected 1`] = `
+<div
+  className="book-shelf-changer"
+>
+  <select
+    onChange={[Function]}
+    value="none"
+  >
+    <option
+      disabled={true}
+      value="none"
+    >
+      Move to...
+    </option>
+    <option
+      value="currentlyReading"
+    >
+      Currently Reading
+    </option>
+    <option
+      value="wantToRead"
+    >
+      Want to Read
+    </option>
+    <option
+      value="read"
+    >
+      Read
+    </option>
+  </select>
+</div>
+`;
+
 exports[`Component: BookShelfChanger should select the shelf of the book 1`] = `
 <div
   className="book-shelf-changer"
