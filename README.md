@@ -1,6 +1,6 @@
 # MyReads
 
-This is the repository that contains the code for The MyReads app. This app is built as the out of class project for Udacity's React nanodegree program part 1: React Fundamentals.
+This is the repository that contains the code for The MyReads app. This app is built as the out of class project for [Udacity's React nanodegree](https://www.udacity.com/course/react-nanodegree--nd019) program part 1: React Fundamentals.
 
 ## Table of Contents
 
