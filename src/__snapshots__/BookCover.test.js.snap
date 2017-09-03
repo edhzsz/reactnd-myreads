@@ -3,12 +3,7 @@
 exports[`Component: BookCover should match its empty snapshot 1`] = `
 <div
   className="book-cover"
-  style={
-    Object {
-      "height": 192,
-      "width": 128,
-    }
-  }
+  style={undefined}
 />
 `;
 
@@ -18,8 +13,6 @@ exports[`Component: BookCover should render the smallthumbnail if thumbnail is n
   style={
     Object {
       "backgroundImage": "url(\\"test-url-small\\")",
-      "height": 192,
-      "width": 128,
     }
   }
 />
@@ -31,8 +24,6 @@ exports[`Component: BookCover should render the thumbnail if both, thumbnail and
   style={
     Object {
       "backgroundImage": "url(\\"test-url\\")",
-      "height": 192,
-      "width": 128,
     }
   }
 />
@@ -44,8 +35,6 @@ exports[`Component: BookCover should render using the thumbnail url as backgroun
   style={
     Object {
       "backgroundImage": "url(\\"test-url\\")",
-      "height": 192,
-      "width": 128,
     }
   }
 />
