@@ -1,6 +1,6 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import BookShelf from './BookShelf.js'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import BookShelf from './BookShelf.js';
 
 const BooksList = ({books, onSearch, onShelfChange}) => {
   const shelfs = ["currentlyReading", "wantToRead", "read"];
@@ -9,7 +9,7 @@ const BooksList = ({books, onSearch, onShelfChange}) => {
     "currentlyReading": "Currently Reading",
     "wantToRead": "Want to Read",
     "read": "Read"
-  }
+  };
 
   const booksByShelf = books
     ? books.reduce((acc, cur) => {

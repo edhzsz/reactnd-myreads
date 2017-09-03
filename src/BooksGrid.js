@@ -1,5 +1,5 @@
-import React from 'react'
-import Book from './Book.js'
+import React from 'react';
+import Book from './Book.js';
 
 const BooksGrid = ( { books, onShelfChange } ) => (
   <ol className="books-grid">

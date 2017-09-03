@@ -1,6 +1,6 @@
-import React from 'react'
-import BookShelfChanger from './BookShelfChanger.js'
-import BookCover from './BookCover.js'
+import React from 'react';
+import BookShelfChanger from './BookShelfChanger.js';
+import BookCover from './BookCover.js';
 
 const Book = ({ book, onShelfChange }) => {
   const imageLinks = book && book.imageLinks;

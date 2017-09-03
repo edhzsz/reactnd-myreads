@@ -1,5 +1,5 @@
-import React from 'react'
-import BooksGrid from './BooksGrid.js'
+import React from 'react';
+import BooksGrid from './BooksGrid.js';
 
 const BookShelf = ({ title, books, onShelfChange }) => (
   <div className="bookshelf">

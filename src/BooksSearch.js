@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import BooksGrid from './BooksGrid.js'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import BooksGrid from './BooksGrid.js';
 
 class BooksSearch extends Component {
   onChange = (event) => {
-    var query = event.target.value
+    const query = event.target.value;
     this.props.onSearch && this.props.onSearch(query);
   }
 

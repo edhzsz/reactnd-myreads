@@ -1,11 +1,11 @@
-import React from 'react'
-import { Route } from 'react-router-dom'
-import debounce from 'lodash/debounce'
-import * as BooksAPI from './BooksAPI'
-import BooksSearch from './BooksSearch.js'
-import BooksList from './BooksList.js'
+import React from 'react';
+import { Route } from 'react-router-dom';
+import debounce from 'lodash/debounce';
+import * as BooksAPI from './BooksAPI';
+import BooksSearch from './BooksSearch.js';
+import BooksList from './BooksList.js';
 import update from 'immutability-helper';
-import './App.css'
+import './App.css';
 
 class BooksApp extends React.Component {
   state = {
@@ -13,7 +13,7 @@ class BooksApp extends React.Component {
     searchResults: [],
     books: [],
     booksShelfs: {}
-  }
+  };
 
   performSearch = (query) => {
     if(query) {
@@ -24,20 +24,22 @@ class BooksApp extends React.Component {
         }
       });
     }
-  }
+  };
 
   debouncedSearch = debounce(this.performSearch, 200);
 
   changeShelf = (book, newShelf) => {
-    BooksAPI.update(book, newShelf).then(res => {
-      this.updateShelf(book, newShelf);
-    });
+    BooksAPI
+      .update(book, newShelf)
+      .then(res => {
+        this.updateShelf(book, newShelf);
+      });
    };
 
   onSearch = (query) => {
     this.setState({ query, searchResults:[] });
     this.debouncedSearch(query);
-  }
+  };
 
   updateBookIn = (list, book, addIfNotFound) => {
     const index = list.findIndex(b => b.id === book.id);
@@ -46,7 +48,7 @@ class BooksApp extends React.Component {
       : addIfNotFound
         ? update(list, {$push: [book]})
         : null;
-  }
+  };
 
   updateShelf = (book, newShelf) => {
     this.setState(state => {
@@ -62,7 +64,7 @@ class BooksApp extends React.Component {
           return {};
       }
 
-      const updatedBooks = this.updateBookIn(state.books, updatedBook, true);
+      const updatedBooks = this.updateBookIn(books, updatedBook, true);
       const updatedBooksShelfs = this.getBooksShelfs(updatedBooks);
       const updatedSearchResults = this.updateBookIn(state.searchResults, updatedBook, false);
 
@@ -75,22 +77,22 @@ class BooksApp extends React.Component {
         : {
           books: updatedBooks,
           booksShelfs: updatedBooksShelfs
-        }
+        };
     });
-  }
+  };
 
   getBooksShelfs = books => {
     return books && books.reduce
-    ? books.reduce((acc, b) => {
-        acc[b.id] = b.shelf;
-        return acc;
-      }, {})
-    : {};
-  }
+      ? books.reduce((acc, b) => {
+          acc[b.id] = b.shelf;
+          return acc;
+        }, {})
+      : {};
+  };
 
   componentDidMount() {
     BooksAPI.getAll().then(books => {
-      this.setState({books, booksShelfs: this.getBooksShelfs(books)})
+      this.setState({books, booksShelfs: this.getBooksShelfs(books)});
     })
   }
 
@@ -115,4 +117,4 @@ class BooksApp extends React.Component {
   }
 }
 
-export default BooksApp
+export default BooksApp;
